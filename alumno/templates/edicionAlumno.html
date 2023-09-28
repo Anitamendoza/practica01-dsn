@@ -1,0 +1,42 @@
+{% extends "./base.html" %}
+
+{% block title %} Gestión de Alumnos {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edición de Alumno</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarAlumno/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <label for="codigo">Código:</label>
+                        <input type="text" id="codigo" name="codigo" value="{{alumno.codigo}}" class="form-control" placeholder="Código"
+                            minlength="6" maxlength="6" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" value="{{alumno.nombre}}" class="form-control" placeholder="Nombre"
+                            maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edad">Edad:</label>
+                        <input type="number" id="edad" name="edad" value="{{alumno.edad}}" class="form-control" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion">Dirección:</label>
+                        <input type="text" id="direccion" name="direccion" value="{{alumno.direccion}}" class="form-control" maxlength="200" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" value="{{alumno.telefono}}" class="form-control" pattern="[0-9]{9,15}" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
